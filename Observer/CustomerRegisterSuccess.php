@@ -18,6 +18,7 @@ class CustomerRegisterSuccess implements ObserverInterface
         $customer ->setApprovalStatus(2);
         $customer->save();
 
+
     }
 }
 

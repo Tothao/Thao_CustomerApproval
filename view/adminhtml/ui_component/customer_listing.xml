@@ -8,7 +8,7 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <columns name="customer_columns" >
 
-        <column name="approval_status" sortOrder="270"  class="Magento\Customer\Ui\Component\Listing\Columns">
+        <column name="approval_status" sortOrder="270"  class="Thao\CustomerApproval\Ui\Component\Listing\Column\ApprovalStatus">
             <settings>
                 <label translate="true">approval_status</label>
                 <visible>false</visible>
