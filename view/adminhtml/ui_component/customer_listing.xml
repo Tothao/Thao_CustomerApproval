@@ -8,10 +8,19 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <columns name="customer_columns" >
 
-        <column name="approval_status" sortOrder="270"  class="Thao\CustomerApproval\Ui\Component\Listing\Column\ApprovalStatus">
+<!--        <column name="approval_status" sortOrder="270"  class="Thao\CustomerApproval\Ui\Component\Listing\Column\ApprovalStatus">-->
+<!--            <settings>-->
+<!--                <label translate="true">approval_status</label>-->
+<!--                <visible>true</visible>-->
+<!--            </settings>-->
+<!--        </column>-->
+        <column name="approval_status" sortOrder="270">
             <settings>
+                <filter>text</filter>
+                <editor>
+                    <editorType>text</editorType>
+                </editor>
                 <label translate="true">approval_status</label>
-                <visible>false</visible>
             </settings>
         </column>
     </columns>

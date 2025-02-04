@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Form/etc/form.xsd">
+    <fieldset name="customer_approval">
+        <field name="approval_status" sortOrder="100" element="select" label="Approval Status">
+            <options>
+                <option name="2" label="Pending"/>
+                <option name="1" label="Approved"/>
+                <option name="0" label="Rejected"/>
+            </options>
+        </field>
+    </fieldset>
+</form>

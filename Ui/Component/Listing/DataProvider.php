@@ -1,9 +1,8 @@
 <?php
-namespace Thao\CustomerApproval\Model\Ui\Component\Listing;
+namespace Thao\CustomerApproval\Ui\Component\Listing;
 
 use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
 use Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult;
-use Magento\Framework\DB\Ddl\Table;
 
 class DataProvider extends SearchResult
 {

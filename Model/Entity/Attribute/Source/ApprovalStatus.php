@@ -14,9 +14,9 @@ class ApprovalStatus extends AbstractSource
     {
         if ($this->_options === null) {
             $this->_options = [
-                ['value' => '0', 'label' => __('Từ chối')],
-                ['value' => '1', 'label' => __('Phê duyệt')],
-                ['value' => '2', 'label' => __('Đang xét duyệt')],
+                ['value' => '0', 'label' => __('Rejected')],
+                ['value' => '1', 'label' => __('Approved')],
+                ['value' => '2', 'label' => __('Pending')],
             ];
         }
         return $this->_options;

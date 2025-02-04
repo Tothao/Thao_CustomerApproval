@@ -2,8 +2,6 @@
 
 namespace Thao\CustomerApproval\Ui\Component\Listing;
 
-use Magento\Customer\Ui\Component\Listing\Column\Actions;
-use Magento\Ui\Component\Listing\Columns\Column;
 use Magento\Customer\Model\ResourceModel\Customer\CollectionFactory;
 
 class CustomerGrid extends \Magento\Customer\Ui\Component\Listing\Listing
