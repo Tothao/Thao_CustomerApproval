@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Di/etc/di.xsd">
+    <type name="Magento\Customer\Controller\Account\LoginPost">
+        <plugin name="check_approve_status_after_login"
+                type="Thao\CustomerApproval\Plugin\LoginPostPlugin"/>
+    </type>
+</config>
