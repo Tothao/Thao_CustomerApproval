@@ -8,8 +8,9 @@ use Magento\Eav\Model\Entity\Attribute\ScopedAttributeInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 
-class CustomerApprovalAtrribute implements DataPatchInterface
+class CustomerApprovalAttribute implements DataPatchInterface
 {
+    public const ATTRIBUTE_CODE = 'approval_status';
     private $moduleDataSetup;
     private $customerSetupFactory;
 
@@ -31,8 +32,7 @@ class CustomerApprovalAtrribute implements DataPatchInterface
         $customerEntity = $customerSetup->getEavConfig()->getEntityType('customer');
         $attributeSetId = $customerEntity->getDefaultAttributeSetId();
 
-        // Thêm thuộc tính customer: approval_status
-        $customerSetup->addAttribute(Customer::ENTITY, 'approval_status', [
+        $customerSetup->addAttribute(Customer::ENTITY, self::ATTRIBUTE_CODE, [
             'type' => 'int',
             'label' => 'Approval Status',
             'input' => 'select',
@@ -43,7 +43,11 @@ class CustomerApprovalAtrribute implements DataPatchInterface
             'user_defined' => true,
             'system' => false,
             'position' => 100,
-            'group' => 'General',  // Thêm vào nhóm "General" nếu cần
+            'group' => 'General',
+            'is_used_in_grid' => true,
+            'is_visible_in_grid' => true,
+            'is_filterable_in_grid' => true,
+            'is_filterable_in_grid' => true,
         ]);
 
         $approvalStatusAttribute = $customerSetup->getEavConfig()->getAttribute(Customer::ENTITY, 'approval_status');
