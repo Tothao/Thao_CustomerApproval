@@ -16,7 +16,7 @@ Class LoginPostPlugin {
         Session $session,
         ManagerInterface $messageManager,
         \Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory,
-        Helper                      $helper
+        Helper $helper
     ) {
         $this->customerSession = $session;
         $this->messageManager = $messageManager;
@@ -43,6 +43,7 @@ Class LoginPostPlugin {
             $resultRedirect = $this->resultRedirectFactory->create();
             return $resultRedirect->setPath('customer/account/login');
         }
+        return $result;
 
     }
 }

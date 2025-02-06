@@ -7,12 +7,12 @@
 -->
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
     <listingToolbar name="listing_top">
-        <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
-            <action name="approval">
+   <massaction name="listing_massaction" component="Magento_Ui/js/grid/tree-massactions">
+            <action name="approved">
                 <settings>
                     <confirm>
-                        <message translate="true">Are you sure you want to Approve the selected customers?</message>
-                        <title translate="true">Approved items</title>
+                        <message translate="true">Are you sure you want to delete the selected customers?</message>
+                        <title translate="true">Delete items</title>
                     </confirm>
                     <url path="CustomerApproval/index/massApproved"/>
                     <type>approved</type>
