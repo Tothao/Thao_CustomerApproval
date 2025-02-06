@@ -9,11 +9,11 @@ Class CreatePostPlugin
 {
     protected $messageManager;
     protected $customerSession;
-    private $helper;
+    protected $helper;
     public function __construct(
         Session $customerSession,
-        \Magento\Framework\Message\ManagerInterface $messageManager,
-        Helper                      $helper
+        ManagerInterface $messageManager,
+        Helper $helper
     )
     {
         $this->customerSession = $customerSession;
@@ -23,12 +23,12 @@ Class CreatePostPlugin
     public function afterExecute(
         \Magento\Customer\Controller\Account\CreatePost $subject,
         $result
-    ) {
+    )
+    {
         $isEnable = $this->helper->isEnableCustomerApproval();
         if(!$isEnable){
             return $result;
         }
-
         $customer = $this->customerSession->getCustomer();
         if(!$customer->getId()){
             return $result;
