@@ -12,6 +12,8 @@ use Magento\Ui\Component\MassAction\Filter;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Customer\Controller\Adminhtml\Index\AbstractMassAction;
+use Thao\CustomerApproval\Helper\Data as EmailHelper;
+
 
 /**
  * Class MassDelete
@@ -23,7 +25,7 @@ class MassApproved extends AbstractMassAction implements HttpPostActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::delete';
+    const ADMIN_RESOURCE = 'Magento_Customer::approve';
 
     /**
      * @var CustomerRepositoryInterface
@@ -36,14 +38,17 @@ class MassApproved extends AbstractMassAction implements HttpPostActionInterface
      * @param CollectionFactory $collectionFactory
      * @param CustomerRepositoryInterface $customerRepository
      */
+    protected $emailHelper;
     public function __construct(
         Context $context,
         Filter $filter,
         CollectionFactory $collectionFactory,
-        CustomerRepositoryInterface $customerRepository
+        CustomerRepositoryInterface $customerRepository,
+        EmailHelper $emailHelper
     ) {
         parent::__construct($context, $filter, $collectionFactory);
         $this->customerRepository = $customerRepository;
+        $this->emailHelper = $emailHelper;
     }
 
     /**
@@ -56,6 +61,7 @@ class MassApproved extends AbstractMassAction implements HttpPostActionInterface
             $customer = $this->customerRepository->getById($customerId);
             $customer->setCustomAttribute('approval_status',1);
             $this->customerRepository->save($customer);
+            $this->emailHelper->sendMail($customer);
             $customersApproved++;
         }
 

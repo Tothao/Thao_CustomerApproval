@@ -31,14 +31,14 @@ class Data extends AbstractHelper
         $this->quoteRepository = $quoteRepository;
     }
 
-    public function sendMail($quote)
+    public function sendMail($customer)
     {
         try {
             // Tắt inline translation trước khi gửi email
             $this->inlineTranslation->suspend();
 
-            $customerEmail = $quote->getCustomerEmail();
-            $customerName = $quote->getCustomerFirstname() . ' ' . $quote->getCustomerLastname();
+            $customerEmail = $customer->getEmail();
+            $customerName = $customer->getFirstname() . ' ' . $customer->getLastname();
             $senderEmail = $this->scopeConfig
                 ->getValue('trans_email/ident_general/email', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
             $senderName = $this->scopeConfig
@@ -62,7 +62,7 @@ class Data extends AbstractHelper
                 ])
                 ->setTemplateVars([
                     'customer_name' => $customerName,
-                    'quote_id' => $quote->getId(),
+                    'quote_id' => $customer->getId(),
                 ])
                 ->setFrom($sender)
                 ->addTo($customerEmail)
@@ -71,10 +71,6 @@ class Data extends AbstractHelper
 
             // Bật lại inline translation
             $this->inlineTranslation->resume();
-
-            // Cập nhật trạng thái của quote
-            $quote->setApprovalStatus(1);
-            $this->quoteRepository->save($quote);
 
             return true;
         } catch (\Exception $e) {
