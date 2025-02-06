@@ -1,0 +1,8 @@
+{{template config_path="design/email/header_template"}}
+
+<p>Hello {{var customer.getFirstname()}},</p>
+<p>Your account has been approved. You can now log in and start shopping.</p>
+
+<p><a href="{{store url="customer/account/login"}}">Click here to login</a></p>
+
+{{template config_path="design/email/footer_template"}}
