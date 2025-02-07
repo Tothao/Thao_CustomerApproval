@@ -47,7 +47,7 @@ class Data extends AbstractHelper
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE
             );
            } $templateType = $this->scopeConfig->getValue(
-                'customer_approval/general/email_template',
+                'customer_approval/general/rejection_email_template',
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 
             $sender = [
