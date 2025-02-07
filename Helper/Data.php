@@ -15,38 +15,40 @@ class Data extends AbstractHelper
     protected $scopeConfig;
     protected $storeManager;
     protected $inlineTranslation;
-    protected $quoteRepository;
+
 
     public function __construct(
         TransportBuilder $transportBuilder,
         ScopeConfigInterface $scopeConfig,
         StoreManagerInterface $storeManager,
         StateInterface $inlineTranslation,
-        CartRepositoryInterface $quoteRepository
+
     ) {
         $this->transportBuilder = $transportBuilder;
         $this->scopeConfig = $scopeConfig;
         $this->storeManager = $storeManager;
         $this->inlineTranslation = $inlineTranslation;
-        $this->quoteRepository = $quoteRepository;
     }
 
-    public function sendMail($quote)
+    public function sendMail($customer, $type)
     {
         try {
             // Tắt inline translation trước khi gửi email
             $this->inlineTranslation->suspend();
-
-            $customerEmail = $quote->getCustomerEmail();
-            $customerName = $quote->getCustomerFirstname() . ' ' . $quote->getCustomerLastname();
+            $customerEmail = $customer->getEmail();
+            $customerName = $customer->getFirstname() . ' ' . $customer->getLastname();
             $senderEmail = $this->scopeConfig
                 ->getValue('trans_email/ident_general/email', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
             $senderName = $this->scopeConfig
                 ->getValue('trans_email/ident_general/name', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+           if($type== 1){
             $templateType = $this->scopeConfig->getValue(
                 'customer_approval/general/email_template',
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE
             );
+           } $templateType = $this->scopeConfig->getValue(
+                'customer_approval/general/email_template',
+                \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
 
             $sender = [
                 'name' => $senderName,
@@ -61,24 +63,18 @@ class Data extends AbstractHelper
                     'store' => \Magento\Store\Model\Store::DEFAULT_STORE_ID,
                 ])
                 ->setTemplateVars([
-                    'customer_name' => $customerName,
-                    'quote_id' => $quote->getId(),
+                    'name' => $customerName,
+                    'email' => $customerEmail,
                 ])
                 ->setFrom($sender)
                 ->addTo($customerEmail)
                 ->getTransport();
             $transport->sendMessage();
-
-            // Bật lại inline translation
             $this->inlineTranslation->resume();
-
-            // Cập nhật trạng thái của quote
-            $quote->setApprovalStatus(1);
-            $this->quoteRepository->save($quote);
 
             return true;
         } catch (\Exception $e) {
-            // Bật lại inline translation nếu có lỗi xảy ra
+
             $this->inlineTranslation->resume();
             return $e->getMessage();
         }

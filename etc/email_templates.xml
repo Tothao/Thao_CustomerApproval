@@ -5,4 +5,9 @@
               file="customer_approval_email.html"
               type="html"
               module="Thao_CustomerApproval" area="frontend"/>
+    <template id="customer_approval_general_rejection_email_template"
+              label="rejection email template"
+              file="rejection_email_template.html.html"
+              type="html"
+              module="Thao_CustomerApproval" area="frontend"/>
 </config>

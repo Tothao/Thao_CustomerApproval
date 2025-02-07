@@ -12,6 +12,7 @@ use Magento\Ui\Component\MassAction\Filter;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Controller\ResultFactory;
 use Magento\Customer\Controller\Adminhtml\Index\AbstractMassAction;
+use Thao\CustomerApproval\Helper\Data as EmailHelper;
 
 
 /**
@@ -24,7 +25,7 @@ class MassApproved extends AbstractMassAction implements HttpPostActionInterface
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magento_Customer::delete';
+    const ADMIN_RESOURCE = 'Magento_Customer::approve';
 
     /**
      * @var CustomerRepositoryInterface
