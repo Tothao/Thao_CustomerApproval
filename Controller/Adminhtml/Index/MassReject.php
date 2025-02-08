@@ -18,7 +18,7 @@ use Thao\CustomerApproval\Helper\Data as EmailHelper;
 /**
  * Class MassDelete
  */
-class MassApproved extends AbstractMassAction implements HttpPostActionInterface
+class MassReject extends AbstractMassAction implements HttpPostActionInterface
 {
     /**
      * Authorization level of a basic admin session
@@ -57,20 +57,20 @@ class MassApproved extends AbstractMassAction implements HttpPostActionInterface
     protected function massAction(AbstractCollection $collection)
     {
         $isSendEmail= $this->emailHelper->isSendEmail();
-        $customersApproved = 0;
+        $customersReject = 0;
         foreach ($collection->getAllIds() as $customerId) {
             $customer = $this->customerRepository->getById($customerId);
-            $customer->setCustomAttribute('approval_status',EmailHelper::APPROVED_STATUS);
+            $customer->setCustomAttribute('approval_status',EmailHelper::REJECTED_STATUS);
             $this->customerRepository->save($customer);
-            if(!$isSendEmail){
+            if(!$isSendEmail) {
             }else {
-                $this->emailHelper->sendMail($customer, 'approve');
+                $this->emailHelper->sendMail($customer, 'reject');
             }
-            $customersApproved++;
+            $customersReject++;
         }
 
-        if ($customersApproved) {
-            $this->messageManager->addSuccessMessage(__('A total of %1 record(s) were approved.', $customersApproved));
+        if ($customersReject) {
+            $this->messageManager->addSuccessMessage(__('A total of %1 record(s) were reject.', $customersReject));
         }
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);

@@ -10,7 +10,7 @@ Class CustomerApprovalObserver implements ObserverInterface{
     private $customerRepository;
     private $helper;
     public function __construct(CustomerRepositoryInterface $customerRepository,
-    helper $helper)
+    Helper $helper)
     {
         $this->customerRepository = $customerRepository;
         $this->helper = $helper;
@@ -20,7 +20,7 @@ Class CustomerApprovalObserver implements ObserverInterface{
         $isEnable = $this->helper->isEnableCustomerApproval();
         if($isEnable){
             $customer = $observer->getEvent()->getCustomer();
-            $customer->setCustomAttribute('approval_status', 2);
+            $customer->setCustomAttribute('approval_status', Helper::PENDING_STATUS);
             $this->customerRepository->save($customer);
         }
 

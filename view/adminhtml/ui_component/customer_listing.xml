@@ -19,6 +19,17 @@
                     <label translate="true">Approved</label>
                 </settings>
             </action>
+       <action name="reject">
+           <settings>
+               <confirm>
+                   <message translate="true">Are you sure you want to reject the selected customers?</message>
+                   <title translate="true">Reject items</title>
+               </confirm>
+               <url path="CustomerApproval/index/massReject"/>
+               <type>reject</type>
+               <label translate="true">Reject</label>
+           </settings>
+       </action>
         </massaction>
     </listingToolbar>
 </listing>

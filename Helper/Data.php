@@ -11,6 +11,9 @@ use Magento\Quote\Api\CartRepositoryInterface;
 
 class Data extends AbstractHelper
 {
+    const PENDING_STATUS = 2;
+    const REJECTED_STATUS = 0;
+    const APPROVED_STATUS = 1;
     protected $transportBuilder;
     protected $scopeConfig;
     protected $storeManager;
@@ -30,6 +33,24 @@ class Data extends AbstractHelper
         $this->inlineTranslation = $inlineTranslation;
     }
 
+    public function isEnableCustomerApproval()
+    {
+        $valueFromConfig = $this->scopeConfig->getValue(
+            'customer_approval/general/enable',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+        );
+
+        return $valueFromConfig;
+    }
+
+    public function  isSendEmail(){
+        $valuSendEmailConfig = $this->scopeConfig->getValue(
+            'customer_approval/general/is_send_email_customer',
+            \Magento\Store\Model\ScopeInterface::SCOPE_STORE,
+        );
+        return $valuSendEmailConfig;
+    }
+
     public function sendMail($customer, $type)
     {
         try {
@@ -41,14 +62,17 @@ class Data extends AbstractHelper
                 ->getValue('trans_email/ident_general/email', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
             $senderName = $this->scopeConfig
                 ->getValue('trans_email/ident_general/name', \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
-           if($type== 1){
+           if($type== 'approve'){
             $templateType = $this->scopeConfig->getValue(
                 'customer_approval/general/email_template',
                 \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-            );
-           } $templateType = $this->scopeConfig->getValue(
-                'customer_approval/general/rejection_email_template',
-                \Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+                );
+           } else {
+               $templateType = $this->scopeConfig->getValue(
+                   'customer_approval/general/rejection_email_template',
+                   \Magento\Store\Model\ScopeInterface::SCOPE_STORE
+               );
+           }
 
             $sender = [
                 'name' => $senderName,
