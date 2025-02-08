@@ -61,7 +61,7 @@ class MassApproved extends AbstractMassAction implements HttpPostActionInterface
             $customer = $this->customerRepository->getById($customerId);
             $customer->setCustomAttribute('approval_status',1);
             $this->customerRepository->save($customer);
-            $this->emailHelper->sendMail($customer);
+            $this->emailHelper->sendMail($customer,'approve' );
             $customersApproved++;
         }
 
