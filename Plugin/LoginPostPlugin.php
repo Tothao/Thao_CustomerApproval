@@ -33,7 +33,7 @@ Class LoginPostPlugin {
         }
         $isLoggedIn = $this->customerSession->isLoggedIn();
         if (!$isLoggedIn) {
-            return $$result;
+            return $result;
         }
         $customer = $this->customerSession->getCustomer();
         $approvalStatus = $customer->getApprovalStatus();

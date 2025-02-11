@@ -12,7 +12,7 @@
                 <settings>
                     <confirm>
                         <message translate="true">Are you sure you want to delete the selected customers?</message>
-                        <title translate="true">Delete items</title>
+                        <title translate="true">Approval items</title>
                     </confirm>
                     <url path="CustomerApproval/index/massApproved"/>
                     <type>approved</type>

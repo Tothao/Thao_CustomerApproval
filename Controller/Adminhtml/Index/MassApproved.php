@@ -50,7 +50,6 @@ class MassApproved extends AbstractMassAction implements HttpPostActionInterface
         $this->customerRepository = $customerRepository;
         $this->emailHelper = $emailHelper;
     }
-
     /**
      * @inheritdoc
      */
