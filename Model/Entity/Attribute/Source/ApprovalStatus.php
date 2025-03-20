@@ -14,9 +14,9 @@ class ApprovalStatus extends AbstractSource
     {
         if ($this->_options === null) {
             $this->_options = [
-                ['value' => '0', 'label' => __('Rejected')],
-                ['value' => '1', 'label' => __('Approved')],
-                ['value' => '2', 'label' => __('Pending')],
+                ['value' => \Thao\CustomerApproval\Helper\Data::REJECTED_STATUS, 'label' => __('Rejected')],
+                ['value' => \Thao\CustomerApproval\Helper\Data::APPROVED_STATUS, 'label' => __('Approved')],
+                ['value' => \Thao\CustomerApproval\Helper\Data::PENDING_STATUS, 'label' => __('Pending')],
             ];
         }
         return $this->_options;

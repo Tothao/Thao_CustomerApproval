@@ -3,10 +3,7 @@ namespace Thao\CustomerApproval\Plugin;
 use Magento\Customer\Model\Session;
 use Magento\Framework\Message\ManagerInterface;
 use Thao\CustomerApproval\Helper\Data as Helper;
-
-
-Class CreatePostPlugin
-{
+Class CreatePostPlugin {
     protected $messageManager;
     protected $customerSession;
     protected $helper;
@@ -32,8 +29,7 @@ Class CreatePostPlugin
         $customer = $this->customerSession->getCustomer();
         if(!$customer->getId()){
             return $result;
-        }
-        $this->messageManager->addSuccessMessage(__('Registration successful! Please wait for approval.'));
+        }$this->messageManager->addSuccessMessage(__('Registration successful! Please wait for approval.'));
         $this->customerSession->logout();
         return $result;
     }
