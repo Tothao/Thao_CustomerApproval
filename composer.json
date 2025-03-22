@@ -1,0 +1,26 @@
+{
+    "name": "thao/module-customer-approval",
+    "description": "Magento 2 module for managing customer account approvals.",
+    "require": {
+        "magento/framework": "^103.0.0"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "MIT"
+    ],
+    "authors": [
+        {
+            "name": "To Thao",
+            "email": "tothao2502@gmail.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Thao\\CustomerApproval\\": ""
+        }
+    }
+}
