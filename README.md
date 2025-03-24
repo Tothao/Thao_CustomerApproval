@@ -38,6 +38,30 @@ Magento 2 module for managing customer account approvals.
    php bin/magento setup:di:compile
    php bin/magento cache:flush
    ```
+## Use Guide
+
+To configure the module, go to **Admin > Configuration > Thaott > Customer Approval > General Configuration**.
+
+### Available Settings:
+
+- **Enable Module:** Enable/disable the module.
+- **Send Approval Email to Customer:** Enable to send an email notification to the customer upon approval.
+- **Approval Email Template:** Select the email template to be sent when a customer is approved.
+- **Rejection Email Template:** Select the email template to be sent when a customer is rejected.
+
+![General Configuration](docs/images/general_configuration.png)![img.png](img.png)
+
+- **After create account success**
+
+![After Register success ](docs/images/register_success.png)![img.png](img.png)
+
+- **How to approve customer:** Admin > Customers > All Customers > Actions > Approved
+
+![approve](docs/images/approve.png)![img.png](img.png)
+
+- **How to Reject customer:** Admin > Customers > All Customers > Actions > Reject
+
+![Reject](docs/images/reject.png)![img.png](img.png)
 
 ## Support
 

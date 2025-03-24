@@ -11,10 +11,10 @@
             <action name="approved">
                 <settings>
                     <confirm>
-                        <message translate="true">Are you sure you want to delete the selected customers?</message>
+                        <message translate="true">Are you sure you want to approve the selected customers?</message>
                         <title translate="true">Approval items</title>
                     </confirm>
-                    <url path="CustomerApproval/index/massApproved"/>
+                    <url path="CustomerApproval/Index/MassApproved"/>
                     <type>approved</type>
                     <label translate="true">Approved</label>
                 </settings>
@@ -25,7 +25,7 @@
                    <message translate="true">Are you sure you want to reject the selected customers?</message>
                    <title translate="true">Reject items</title>
                </confirm>
-               <url path="CustomerApproval/index/massReject"/>
+               <url path="CustomerApproval/Index/MassReject"/>
                <type>reject</type>
                <label translate="true">Reject</label>
            </settings>

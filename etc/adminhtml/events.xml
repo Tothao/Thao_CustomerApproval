@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
-<event name="customer_save_after_data_object">
-    <observer name="Thao_CustomerApproval::save_after_approve_status" instance="Thao\CustomerApproval\Observer\CustomerSaveAfterObserver" /></event>
+<!--<event name="customer_save_after_data_object">-->
+<!--    <observer name="Thao_CustomerApproval::save_after_approve_status"-->
+<!--              instance="Thao\CustomerApproval\Observer\CustomerSaveAfterObserver" />-->
+<!--</event>-->
 </config>
