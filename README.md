@@ -49,19 +49,19 @@ To configure the module, go to **Admin > Configuration > Thaott > Customer Appro
 - **Approval Email Template:** Select the email template to be sent when a customer is approved.
 - **Rejection Email Template:** Select the email template to be sent when a customer is rejected.
 
-![General Configuration](docs/images/general_configuration.png)![img.png](img.png)
+![General Configuration](docs/images/general_configuration.png)
 
-- **After create account success**
+After create account success
 
-![After Register success ](docs/images/register_success.png)![img.png](img.png)
+![After Register success](docs/images/register_success.png)
 
-- **How to approve customer:** Admin > Customers > All Customers > Actions > Approved
+How to approve customer: Admin > Customers > All Customers > Actions > Approved
 
-![approve](docs/images/approve.png)![img.png](img.png)
+![approve](docs/images/approve.png)
 
-- **How to Reject customer:** Admin > Customers > All Customers > Actions > Reject
+How to Reject customer: Admin > Customers > All Customers > Actions > Reject
 
-![Reject](docs/images/reject.png)![img.png](img.png)
+![Reject](docs/images/reject.png)
 
 ## Support
 
